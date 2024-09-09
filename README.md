@@ -41,5 +41,5 @@ A redis server is also needed.
 https://drive.google.com/file/d/1uYvBX36qFq0kZNknYMJjyXCU-97sxBrj/view?usp=sharing
 https://drive.google.com/file/d/1YUJsDSpd6qV_5DwPOz7sjalCABcCk6Gv/view?usp=sharing
 
-For questions and queries, contact: shaveen.singh@gmail.com
+For questions and queries, contact: xinyu.li1@monash.edu
  

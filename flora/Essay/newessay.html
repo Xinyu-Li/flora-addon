@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Digital Learning Essay</title>
+<link rel="stylesheet" href="/lms/course/format/singleactivity/styles.css">
+<link rel="stylesheet" href="../css/style.css">
+<script src="./jquery.min.js"></script>
+<script src="../FLoRAconfig.js"></script>
+<script src="newessay.js"></script>
+</head>
+<body>
+<p><b><span class="essay">Essay</span> (<span class="autosaved">autosaved</span>)</b>
+<span class="count">count</span>: <span id="display_count">0</span> <span class="words">words</span>. <span class="words_remaining">Words remaining</span>: <span id="word_left"></span>
+
+<script type="text/javascript">  document.getElementById("word_left").innerHTML = essayLength;</script>
+<div class="container">
+  <textarea class="essay" name="txtScript" id="word_count"></textarea>
+</div>
+
+<!-- <button style="
+padding: 10px;
+font-size: 16px;
+margin: 10px 20px 20px 20px;" id="submit_essay" class = "submit_essay" > Submit as Final Essay</button>
+-->
+
+</body></html>

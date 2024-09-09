@@ -1,0 +1,313 @@
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 1em;
+}
+
+h2 {
+    text-transform: uppercase;
+    padding: 0px 0px 8px;
+    margin: 0px 0px 16px;
+    border-bottom: 3px solid rgba(0,0,0,1);
+}
+
+.chart-container {
+    margin-bottom: 40px;
+}
+
+i.material-icons {
+    vertical-align: middle;
+    line-height: 1.5;
+} 
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* class for each car make in treemap */
+.setu-square {
+    fill: #003B73;
+    stroke: #003B73;
+}
+
+.access-of-course-resources-square {
+    fill: #E50000;
+    stroke: #E50000;
+}
+
+.forum-participation-square {
+    fill: #003376;
+    stroke: #003376;
+}
+
+.assessment-performance-square {
+    fill: #F7D900;
+    stroke: #F7D900;
+}
+
+.learner-to-learner-collaboration-square {
+    fill: #C3092F;
+    stroke: #C3092F;
+}
+
+.student-performance-square {
+    fill: #FFCE00;
+    stroke: #FFCE00;
+}
+
+.student-attrition-square {
+    fill: #162133;
+    stroke: #162133;
+}
+
+.assignment-submission-square {
+    fill: #003469;
+    stroke: #003469;
+}
+
+.help-seeking-behaviour-square {
+    fill: #4C4C4C;
+    stroke: #4C4C4C;
+}
+
+.student-attendance-square {
+    fill: #4BA82E;
+    stroke: #4BA82E;
+}
+
+.external-reference-square {
+    fill: #4BA82E;
+    stroke: #4BA82E;
+}
+
+.student-background-square {
+    fill: #4BA82E;
+    stroke: #4BA82E;
+}
+
+.employability-after-completion-of-course-square {
+    fill: #E61028;
+    stroke: #E61028;
+}
+
+/* class for each car make in bump chart */
+.setu {
+    fill: url(#setu-logo);
+    stroke: #003B73;
+}
+
+.access-of-course-resources {
+    fill: url(#access-of-course-resources-logo);
+    stroke: #E50000;
+}
+
+.forum-participation {
+    fill: url(#forum-participation-logo);
+    stroke: #003376;
+}
+
+.assessment-performance {
+    fill: url(#assessment-performance-logo);
+    stroke: #F7D900;
+}
+
+.learner-to-learner-collaboration {
+    fill: url(#learner-to-learner-collaboration-logo);
+    stroke: #C3092F;
+}
+
+.student-performance {
+    fill: url(#student-performance-logo);
+    stroke: #FFCE00;
+}
+
+.surveys-feedback {
+    fill: url(#surveys-feedback-logo);
+    stroke: #000000;
+}
+
+.student-attrition {
+    fill: url(#student-attrition-logo);
+    stroke: #162133;
+}
+
+.assignment-submission {
+    fill: url(#assignment-submission-logo);
+    stroke: #003469;
+}
+
+.help-seeking-behaviour {
+    fill: url(#help-seeking-behaviour-logo);
+    stroke: #4C4C4C;
+}
+
+.student-attendance {
+    fill: url(#student-attendance-logo);
+    stroke: #4BA82E;
+}
+
+.student-background{
+    fill: url(#student-background-logo);
+    stroke: #4BA82E;
+}
+
+.external-reference{
+    fill: url(#external-reference-logo);
+    stroke: #4BA82E;
+}
+
+.employability-after-completion-of-course {
+    fill: url(#employability-after-completion-of-course-logo);
+    stroke: #E61028;
+}
+
+/* class for each car colour in bump chart */
+.grey {
+    fill: #808080;
+    stroke: #808080;
+}
+
+.black {
+    fill: #000000;
+    stroke: #000000;
+}
+
+.white-ivory {
+    fill: #FFFFFF;
+    stroke: #808080;
+}
+
+.silver-aluminium {
+    fill: #C0C0C0;
+    stroke: #C0C0C0;
+}
+
+.bronze {
+    fill: #CD7F32;
+    stroke: #CD7F32;
+}
+
+.beige {
+    fill: #C3B091;
+    stroke: #C3B091;
+}
+
+.blue {
+    fill: #0000FF;
+    stroke: #0000FF;
+}
+
+.red-maroon {
+    fill: #FF0000;
+    stroke: #FF0000;
+}
+
+.brown {
+    fill: #A52A2A;
+    stroke: #A52A2A;
+}
+
+.yellow {
+    fill: #FFFF00;
+    stroke:	#FFFF00;
+}
+
+.green {
+    fill: #008000;
+    stroke:	#008000;
+}
+
+.purple {
+    fill: #800080;
+    stroke: #800080;
+}
+
+.gold {
+    fill: #FFD700;
+    stroke: #FFD700;
+}
+
+.orange {
+    fill: #FFA500;
+    stroke: #FFA500;
+}
+
+.pink {
+    fill: #FF69B4;
+    stroke: #FF69B4;
+}
+
+.multi-coloured {
+    fill: url("#myGradient");
+    stroke: #808080;
+}
+
+/* tooltip for bump chart */
+.tooltip {
+    position: absolute;
+    padding: 10px;
+    font: 14px sans-serif;
+    background: #222;
+    color: #fff;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0.9;
+    white-space: nowrap;
+    visibility: hidden;
+}
+
+/* formatting for when user hovers over or clicks on bump chart */
+.click-active-makes,
+.active-makes {
+    opacity: 1.0;
+    stroke-opacity: 1.0;
+    z-index: 1000;
+    r: 20;
+}
+
+.click-active,
+.active {
+    opacity: 1.0;
+    stroke-opacity: 1.0;
+    z-index: 1000;
+}
+
+path.click-active {
+    stroke-width: 3.0;
+}
+
+path.active {
+    stroke-width: 3.0;
+}
+
+/* format the numbers on the x and y axis */
+.axis text {
+    font: 12px "Arial Narrow" ;//sans-serif;
+}
+
+/* format the axis itself and the ticks */
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+/* remove the x axis */
+.x.axis path {
+    display: none;
+}
+
+.axis-label{
+    font: 14px sans-serif;
+}
+
+.x.axis {
+    font: 14px sans-serif;
+}

@@ -1,0 +1,88 @@
+
+<html><head>
+<title>no title</title>
+<link rel="stylesheet" href="css/planner_tool.css">
+<script src="js/jquery.min.js"></script>
+<script src="../FLoRAconfig.js"></script>
+<script src="js/common.js"></script>
+<script src="js/planner_tool.js"></script>
+<script type="text/javascript">
+  $(window).on('load', function () {
+    //var preloaded=sessionStorage.getItem("planner_loaded_flag5");
+    //var doinit=false;
+    //if (!preloaded) {
+    //  sessionStorage.setItem("planner_loaded_flag5", true);
+    //  doinit=true;  
+    //}
+    //if (doinit) {
+      setTimeout(function() {
+        pas = localStorage.getItem('planner_activities');
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const uid = urlParams.get('uid');
+        const lang = localStorage.getItem("moodle-lang");
+        init_plannertool(uid,lang);
+        if (pas) {
+          setPlannedActivities(pas);
+        }
+      }, 200);
+    //} else {
+    //  alert("Planner already loaded " + preloaded);
+    //}
+  });
+  $(window).on('blur', function () {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const uid = localStorage.getItem("username"); //urlParams.get('uid');
+    logData("PLANNER",uid,"BLUR","");
+    localStorage.setItem('planner_activities', JSON.stringify(getPlannedActivities()));
+    //alert("Save: " + JSON.stringify(getPlannedActivities()));
+    logData("PLANNER",uid,"SAVE",getPlannedActivities());
+  });
+  // $(window).on('unload', function () {
+  //   const queryString = window.location.search;
+  //   const urlParams = new URLSearchParams(queryString);
+  //   const uid = urlParams.get('uid');
+  //   //logData(uid,"planner","close");
+  // //  localStorage.setItem("planner_activities", JSON.stringify(getPlannedActivities()));
+  //   //alert("Save: " + JSON.stringify(getPlannedActivities()));
+  //   logData(uid,"plan_save",JSON.stringify(getPlannedActivities()));
+  // });
+  $(window).on('focus', function () {
+
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const uid = localStorage.getItem("username"); //urlParams.get('uid');
+
+    logData("PLANNER",uid,"FOCUS","");
+
+  });
+</script>
+
+</head>
+  <body>
+
+<!-- <h3>Planner for User <span id="userid"> null</span> language <span id="langid">null</span></h3>
+-->
+
+<div class="plannertool" id="plannertool">
+  <div style="width: 95%; margin-left: 5%">
+    <div id="plannertooltoptimeaxis">
+    </div>
+
+    <div id="containerplannertooltarget">
+    </div>
+
+    <div id="plannertoolbottomtimeaxis">
+    </div>
+
+    <div id="containerplannertoolsource">
+    </div>
+  </div>        
+</div>
+
+
+
+
+</body></html>

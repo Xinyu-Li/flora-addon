@@ -1,0 +1,164 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5-sep-2019, 15:12:58
+    Author     : philip
+*/
+
+#div1 {
+}
+#div2 {
+}
+
+:root {
+    z-index: 999999999999;
+    --my-column-height: 100px;
+}
+
+.row {
+    position: relative;
+    display: table;
+    width: 100%; 
+    table-layout: fixed; 
+    border-spacing: 0px; 
+/*    margin-left: 5%;*/
+}
+.column {
+    display: table-cell;
+    height: var(--my-column-height);
+    background-color: white;
+    border-right: 1px dashed #aaaaaa;
+}
+.column:first-child {
+    border-left: 2px solid #aaaaaa;
+}
+.column:last-child {
+    border-right: none;
+}
+/*every fifth element a solid right border*/
+.column:nth-child(5n+0) {
+    border-right: 2px solid #aaaaaa;
+}
+.timecolumn {
+    display: table-cell;
+/*    top: 100px;*/
+    height: 1px;
+    background-color: white;
+    border-top: 1px solid transparent;
+    border-color: black;
+    margin: 20px;
+}
+.timecolumn:last-child {
+    border-top: none;
+    border-bottom: none;
+}
+/* Diamond square */
+.timecolumn:nth-child(5n+1) .tick {
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-bottom-color: black;
+    position: relative;
+    top: -17px;
+}
+/* Diamond square */
+.timecolumn:nth-child(5n+1) .tick:after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 8px;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: black;    
+}
+.timecolumn:nth-child(5n+1) .tick.bottom-right {
+      right: 9px;
+      bottom: 8px;
+/*    border-color: black;*/
+}
+
+.planneritempicker {
+    position: absolute;
+    top: 0px;
+    width: 10px;
+    height: 100px;
+}
+.planneritempicker:hover {
+    cursor: pointer;
+}
+
+/* for picker small bar left area of planner tool item (to drag the item) 
+    from: https://css-tricks.com/stripes-css/   */
+.stripe-90 {
+    color: black;
+    background: repeating-linear-gradient(
+        90deg,
+        #ddd,
+        #ddd 1px,
+        #555 1px,
+        #555 2px
+        );
+}
+
+.dropzone {
+}
+.resizable {
+    background: white;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.resizable .resizers{
+}
+/* right bottom triangle for sizing element*/
+.resizable .resizers .resizer{
+    position: absolute;  
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid gray;
+    border-left: 12px solid transparent;  
+}
+/*.resizable .resizers .resizer.top-left {
+  left: -5px;
+  top: -5px;
+  cursor: nwse-resize; resizer cursor
+}
+.resizable .resizers .resizer.top-right {
+  right: -5px;
+  top: -5px;
+  cursor: nesw-resize;
+}
+.resizable .resizers .resizer.bottom-left {
+  left: -5px;
+  bottom: -5px;
+  cursor: nesw-resize;
+}*/
+.resizable .resizers .resizer.bottom-right {
+    right: 3px;
+    bottom: 3px;
+    cursor: nwse-resize;
+}
+
+.activitytext {
+    color: white;
+    width: 70%;
+    height: 60%;
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+/*
+    position: absolute;
+    left: 20px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 100px; /* set same as height .resizable class */     

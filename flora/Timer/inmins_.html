@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE>
+<html>
+  <head>
+    <title>jquery-countdown</title>
+    <script src="./jquery.min.js"></script>
+    <script src="./js/flipclock.js"></script>
+    <script src="../FLoRAconfig.js"></script>
+    <link href="./css/flipclock.css" rel="stylesheet" type="text/css" />
+    <script>
+
+   
+
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var mins = parseInt(urlParams.get('mins'));
+      var uid = parseInt(urlParams.get('uid'));
+      var u_id = localStorage["uid"];
+      var u_course = localStorage.getItem("u_course");
+
+
+    var STORAGEPARAM = "ESSAY_START"; //"flora_task_timer_" + localStorage["uid"] + "_" + localStorage.getItem("u_course") ;
+    var timer_clock;
+
+    // function setWithExpiry(key, value, ttl) {
+    //   const now = new Date()
+
+    //   // `item` is an object which contains the original value
+    //   // as well as the time when it's supposed to expire
+    //   const item = {
+    //     value: value,
+    //     expiry: now.getTime() + ttl,
+    //   }
+    //   localStorage.setItem(key, JSON.stringify(item))
+    // }
+
+    // function getWithExpiry(key) {
+    //   const itemStr = localStorage.getItem(key)
+    //   // if the item doesn't exist, return null
+    //   if (!itemStr) {
+    //     return null
+    //   }
+    //   const item = JSON.parse(itemStr)
+    //   const now = new Date()
+    //   // compare the expiry time of the item with the current time
+    //   if (now.getTime() > item.expiry) {
+    //     // If the item is expired, delete the item from storage
+    //     // and return null
+    //     localStorage.removeItem(key)
+    //     return null
+    //   }
+    //   return item.value
+    // }
+
+
+    
+    $(function(){ 
+
+
+      
+      if (localStorage.getItem("moodle-lang") == 'nl'){
+        document.getElementById("duration").innerHTML = "Totale taakduur: " + mins + " minuten" ;
+      }else if (localStorage.getItem("moodle-lang") == 'de'){
+        document.getElementById("duration").innerHTML = "Total Task Duration: " + mins + " minute(s)" ;
+      }else{
+        document.getElementById("duration").innerHTML = "Total Task Duration: " + mins + " minute(s)" ;
+      }
+
+      var now = new Date();
+        // if(!localStorage[STORAGEPARAM]) {
+        //   localStorage.clear();
+        //   localStorage["uid"] = u_id;
+        //   localStorage["u_course"] = u_course;
+        //   localStorage[STORAGEPARAM] = now.getTime();
+        //   now.setTime(now.getTime()+(mins*60*1000));
+        //   logData("TIMER", uid,"ESSAY_TASK_START","00:00:00");
+
+        // } 
+
+      var lapsed_time =  Math.floor((now.getTime() - parseInt(localStorage[STORAGEPARAM]))/1000);
+      remaining_time = ((mins*60) - lapsed_time) > 0 ? ((mins*60) - lapsed_time) : 0;
+     
+      if (remaining_time >= 0 ){
+      var s = document.createElement("script"); 
+        s.src = "https://floralearn.org/flora/Timer/js/flipclock.js"; 
+        s.onload = function(e){ 
+          timer_clock = $('.clock').FlipClock(remaining_time, {
+                clockFace: 'MinuteCounter',
+                countdown: true,
+                callbacks: {
+                  stop: function() {
+                    $('.message').html("Time's Up!");
+                    //logData("TIMER", uid,"ESSAY_TASK_END","00:90:00");            
+                  }
+                }
+            });
+        };
+        document.head.appendChild(s); 
+
+
+          if (remaining_time <= 0){
+              var txt = "Time's Up!";
+                        txt += '<button style="right:70px; bottom:15px; position: fixed;" onclick="alert(\"Activity Timer is restarting!\");localStorage.clear();location.reload();" disabled>Restart Activity </button>'
+                    $('.message').html(txt);
+                    $('.message').show();
+                    $('#duration').hide();
+          }
+      }else{
+
+            // timer_clock = $('.clock').FlipClock(0, {
+            //     clockFace: 'MinuteCounter',
+            //     countdown: true,
+            //     autoStart: false,
+            //     callbacks: {
+            //       stop: function() {
+            //         var txt = "Time's Up!";
+            //             txt += '<button style="right:70px; bottom:15px; position: fixed;" onclick="alert(\"Activity Timer is restarting!\");localStorage.clear();location.reload();" disabled>Restart Activity </button>'
+            //         $('.message').html(txt);
+            //         $('.message').show();
+            //         $('#duration').hide();
+            //       }
+            //     }
+            // });
+                     var txt = "Time's Up!";
+                        txt += '<button style="right:70px; bottom:15px; position: fixed;" onclick="localStorage.clear();location.reload();"  disabled>Restart Activity </button>'
+                    $('.message').html(txt);
+                    $('.message').show();
+                    $('#duration').hide();
+                         
+        }
+
+
+   
+    });
+
+
+    </script>
+  </head>
+
+  <body><center><div class="clock" style="margin:2em;"></div> </center>
+    <div class="message" style = "bottom: 16px; position:fixed; left: 40px;display:none;"></div>
+    <div id="duration" style = "bottom: 16px; position:fixed; left: 40px;display:block;"> </div>
+          
+  </body>
+</html>

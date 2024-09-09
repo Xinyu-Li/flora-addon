@@ -1,0 +1,47 @@
+
+<!DOCTYPE>
+<html>
+  <head>
+    <title>jquery-countdown</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="../FLoRAconfig.js"></script>
+    <link href="css/media.css" rel="stylesheet" type="text/css" />
+    <script>
+      //logData(uid,"ESSAY_TASK_START","mins: "+mins);
+      const STORAGEPARAM = "flora_task_timer";
+      const TIMEOUTPARAM = "flora_time_over";
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      var mins = urlParams.get('mins');
+      var uid = urlParams.get('uid');
+            
+      $(function(){ 
+        now=new Date();
+        if(!sessionStorage[STORAGEPARAM]) {
+          sessionStorage[STORAGEPARAM] = now.getTime();
+          now.setTime(now.getTime()+(mins*60*1000));
+          //alert("First: "+window.location.href);
+          logData(uid,"ESSAY_TASK_START","00:00:00");
+        } else {
+          now.setTime(now.getTime()+(mins*60*1000)-(now.getTime()-parseInt(sessionStorage[STORAGEPARAM])));
+      }
+      if (parseInt(now.getTime())<0) {
+				     sessionStorage[TIMEOUTPARAM] = now.getTime();
+				     //alert("FINISH");
+				     }
+        if (!sessionStorage[TIMEOUTPARAM]) {
+          $(".digits").countdown({
+            stepTime: 60,
+            image: "img/digits.png",
+            format: "hh:mm:ss",
+            endTime: now
+          });
+				     } 
+      });
+    </script>
+  </head>
+  <body>
+          <div class="digits"></div>
+  </body>
+</html>

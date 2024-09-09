@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <style type="text/css">
+        
+        #opt_1{
+            margin-bottom: 7px;
+        }
+
+        #opt_2{
+            margin-bottom: 7px;
+        }
+
+        
+        #opt_3{
+            margin-bottom: 7px;
+        }
+    </style>
+
+
+</head>
+<body style = 'padding:40px;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";line-height: 1.5;color: #343a40;' class = "course-1" >
+
+<h1>FloRA Test Page #1 </h1>
+
+<script type="text/javascript">
+        localStorage.clear();
+
+
+        
+        localStorage.setItem('moodle-lang', 'en');
+        localStorage.setItem('scaffolds', 'enabled');
+        localStorage.setItem('userclass','Personalised');
+
+        function logData(a,b,c,d) {
+            var x ;
+        }
+
+        function postAjax(url, data, success) {
+                    let params = typeof data == 'string' ? data : Object.keys(data).map(
+                            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) }
+                        ).join('&');
+
+                    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+                    xhr.open('POST', url);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState>3 && xhr.status==200) { success(xhr.responseText); }
+                    };
+                    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.send(params);
+                    return xhr;      
+        }
+
+</script>
+
+
+<span id='userid' style="display:none">1598</span>
+<span id='username' style="display:none">S. Singh</span>
+<!--  <span id='userclass' style="display:none">Control</span>  -->
+<!-- <span id='userclass' style="display:none">Generalized</span> -->
+<span id='userclass' style="display:none">Personalised</span>
+<span id='userlang' style="display:none">NL</span>
+<span id='userAB' style="display:none">A</span>
+
+<p> User ID : 15 </p>
+<p> Username : S. Singh </p>
+<p> Userclass : Personalized</p>
+<br /><br />
+<!-- <a href= "http://localhost:8888/Scaffolds/clientupdated/index2.html" >  GO to Page 2 </a> -->
+<br /><br />
+<button class="close-button" id="show1" onclick="Scaffold_Meta(2);"> Show # 1</button>
+<button class="close-button" id="show2" onclick="Scaffold_Meta(7);"> Show # 2</button>
+<button class="close-button" id="show3" onclick="Scaffold_Meta(16);"> Show # 3</button>
+<button class="close-button" id="show4" onclick="Scaffold_Meta(21);"> Show # 4</button>
+<button class="close-button" id="show5" onclick="Scaffold_Meta(35);"> Show # 5</button>
+
+<br/><br/>
+
+<h3> Content </h3>
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+
+
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+
+<p>
+In this learning session, the goal is to write a vision essay that describes the future of education. Please describe, in 300 to 400 words, how you envision learning in a school in 2035. 
+<br>  <br>
+Please consult the materials in this learning environment that provide information about three important topics for envisioning the future of education in 2035. 
+ </p>
+
+
+<p>
+The goal of the learning session is to integrate these topics into a vision essay that describes learning in a school in 2035.
+
+At the end of the learning session, you should be able to: 
+
+explain the concepts of artificial intelligence, scaffolding and differentiation 
+explain how they affect learning 
+apply them in the context of education 
+combine the concepts into a future vision for education
+
+
+- Reading: At this stage, it is important to read information about the different topics. How are you going to continue?
+- Monitoring of reading: At this stage, it is important to read information that you think is relevant. How are you going to read relevant information?
+- Monitoring of writing: At this stage, it is important to write relevant information in the essay. How are you going to write relevant information in the essay?
+- Writing: At this stage, it is important to start writing your essay. How are you going to continue?
+
+///
+1.	How we present the question: ‘Do I’ vs ‘How you’?
+2.	Show all options or only a selection based on the scaffolded SRL process?
+3.	Buttons to indicate what student is going to do or use buttons to lead to pages/tools/etc?
+4.	Breakpoint analysis to trigger scaffold in between actions to not interrupt the student in generalised and personalised condition or not?
+
+ </p>
+
+
+
+
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+data = {
+        uid: document.getElementById("userid").innerHTML,
+        username: document.getElementById("username").innerHTML,
+        userclass: document.getElementById("userclass").innerHTML,
+        usergrp: document.getElementById("userAB").innerHTML,
+        userlang : document.getElementById("userlang").innerHTML,
+  };
+
+
+
+
+
+// var  events = new EventSource('https://scaffold.floralearn.org/events/' + "15");
+// events.onmessage = (event) => {
+// 	console.log("Retrieving Data on: " + 'https://scaffold.floralearn.org/events/' + "15")
+//         const parsedData = JSON.parse(event.data);
+//         console.log(parsedData);
+ 
+//         };
+
+</script>
+
+<script>
+var script = document.createElement('script');
+script.type = 'text/javascript';
+var base =  'https://floralearn.org/flora/scaffolds_imp/';
+script.src = base + './scaffolds.js';
+document.head.appendChild(script);
+</script>

@@ -1,0 +1,160 @@
+.container {
+    padding: 10px;
+    border: 1px solid silver;
+}
+
+/*html {
+    overflow: hidden;
+    font-size: large;
+}*/
+
+.modified{
+    display:none;
+}
+
+.container .essay {
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 80%;
+    margin: -10px;
+    font-size: large;
+}
+
+.activity-navigation{
+    display: none;
+}
+
+.clock-overlay-content {
+    position: relative;
+    top: 10px;
+    width: 90%;
+    text-align: center;
+}
+.clockOverlay {
+    height: 175px;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    bottom: 20%;
+    right: 0;
+    background-color: #646464;
+    background-color: rgba(200,200,200,.95);
+    overflow-x: hidden;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.planOverlay {
+    width: 0;
+    position: fixed;
+    z-index: 99999999999;
+    bottom: 0;
+    right: 0;
+    background-color: #646464;
+    background-color: rgba(200,200,200,.95);
+    overflow-x: hidden;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.planOverlay .closebtn {
+    position: relative;
+    top: -20px;
+    left: 0;
+    font-size: 40px;
+}
+
+.plan-overlay-content {
+    position: relative;
+    top: -20px;
+    padding: 0;
+    text-align: center;
+}
+
+.planOverlay a {
+    padding: 4px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+#planframe {
+    padding: 0;
+    top: 0;
+    width: 90%;
+}
+
+#essayframe {
+    padding: 0;
+    top: -20px;
+    width: 90%;
+}
+.essay-overlay-content {
+    top: -40px;
+    padding: 0;
+}
+.essay-overlay-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.essayOverlay .closebtn {
+    position: relative;
+    top: -20px;
+    left: 0;
+    font-size: 40px;
+}
+
+.essayOverlay {
+    height: 565px;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    right: 0;
+    background-color: #646464;
+    background-color: rgba(200,200,200,.95);
+    overflow-x: hidden;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.essayOverlay a {
+    padding: 4px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    -webkit-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+.essayOverlay .closebtn {
+    position: relative;
+    top: -20px;
+    left: 0;
+    font-size: 40px;
+}
+
+.LE_custom_buttons {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    align: center;
+    background-color: #646464;
+    background-color: rgba(200,200,200,.95);
+}

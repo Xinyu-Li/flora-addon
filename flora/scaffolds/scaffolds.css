@@ -1,0 +1,658 @@
+@import 'https://fonts.googleapis.com/css?family=Prompt:400,700';
+
+._modal {
+  /* This way it could be display flex or grid or whatever also. */
+
+  /* Probably need media queries here */
+  width: 630px;
+  max-width: 100%;
+  line-height: 1;  
+  height: 350px; //310px;
+  max-height: 100%;
+  
+  position: fixed;
+  
+  z-index:9999999996;
+  
+  left: 50%;
+  top: 50%;
+  
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+  
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+  
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.closed {
+  display: none;
+}
+
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index:9999999995;
+  
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 65px 30px 20px 30px;
+  border: solid 4px #676767;
+}
+
+._modal .message1{
+margin-top: 8px;
+font-size: 16px;
+font-family: "Arial";
+text-align: center;
+/*font-weight: bolder;*/
+color: #565252;
+margin-bottom: 15px;
+}
+._modal .message2{
+font-size: 14px;
+font-family: "Arial";
+/*display:inline;
+vertical-align: super;
+ */
+margin-top: 20px;
+color: #646994;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+/*  background-color:#556;
+  background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a), 
+  linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+  background-size:80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  
+  font-family: 'Prompt', sans-serif;*/
+}
+/*ul {
+  margin: 10px 0 10px 30px;
+}
+
+li, p {
+  margin: 0 0 10px 0;
+}
+h1 {
+  margin: 0 0 20px 0;
+}*/
+
+#scf_num{
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  top: 10px;
+  
+  /* needs to look OK with or without scrollbar */
+  
+  /*border: 0;
+  background: #9e9b9b;
+  color: white; */
+  padding: 5px 120px;
+  font-size: 1.1rem;
+  font-family: "Arial Black";
+  border-radius: 0px;
+
+  border: 1px solid #efeaea; //#dddddd;
+  background: #f9f9f9 // #e9e9e9;
+  color: #3333331f; //#333333;
+  font-weight: bold;
+  left: 85px;
+
+
+
+}
+
+
+
+._modal .close-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+ /* top: 10px; */
+  
+  /* needs to look OK with or without scrollbar */
+  right: 10px;
+  top: 10px;
+  
+  border: 0;
+  background: #fbf8f8;
+  color: #696666;
+  padding: 5px 10px 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+._modal .checklist-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+ /* top: 10px; */
+  
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+  bottom: 10px;
+  
+  border: 0;
+  background: black;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+._modal .option-button {
+  position: relative;
+  border-radius: 5px;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  /*top: 10px;*/
+  
+  /* needs to look OK with or without scrollbar */
+  /*left: 20px;*/
+  margin: 5px 7px 7px 5px;
+  
+  border: 1px solid #c5c5c5; //1px solid black;
+  background: #dddddd;//#529c5e;
+  /*color: white;*/
+  color: #454545;
+    text-decoration: none;
+  padding: 5px 5px 5px 5px;
+  font-size: 14px;
+  min-width:260px;
+}
+
+
+#id_options input[type="checkbox"] {
+  display: none;
+}
+
+#id_options  span {
+/*  display: inline-block;
+  padding: 10px;
+  text-transform: uppercase;
+  border: 2px solid gold;
+  border-radius: 3px;
+  color: gold;*/
+
+  position: relative;
+  border-radius: 5px;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  /*top: 10px;*/
+  
+  /* needs to look OK with or without scrollbar */
+  /*left: 20px;*/
+  margin: 5px 7px 7px 5px;
+  
+  border: 1px solid #c5c5c5; //1px solid black;
+  background: #dddddd;//#529c5e;
+  /*color: white;*/
+  color: #454545;
+  font-family: "Arial";
+  text-decoration: none;
+  padding: 5px 5px 5px 5px;
+  font-size: 12px;
+  float: left;
+  width:260px;
+  height: 40px;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+#id_options input[type="checkbox"]:checked + span {
+  background-color: gold;
+  color: black;
+}
+
+#myToDo {
+  position: fixed;
+  z-index:999;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  font-family: "Arial";
+  width: 300px;
+  line-height: 0.5;
+  top: 10%;
+  right: 50px;
+  display: none;
+  border-radius :; 10%;
+}
+
+#myToDoheader {
+  padding: 18px;
+  font-family: "Arial";
+  cursor: move;
+  z-index: 10;
+ /* background-color: #2196F3; */
+  color: #fff;
+  cursor: move;
+}
+
+#myToDo .message1{
+font-size: 12px;
+font-family: "Arial";
+text-align: center;
+/*font-weight: bolder;*/
+padding-top: 10px;
+padding-bottom: 10px;
+color: #565252;
+line-height: 1;
+}
+#myToDo .message2{
+font-size: 12px;
+font-family: "Arial";
+display:inline; 
+/*padding-left: 10px;*/
+vertical-align: super;
+color: #646994;
+}
+
+#myToDo .prev-button {
+  position: absolute;
+   display:none;
+    z-index: 1;
+    top: 15px;
+    left: 18px;
+    padding: 8px;
+    font-size: 0.8rem;
+    font-family: "Arial";
+    border-radius: 10%;
+    border: 1px solid #dddddd;
+    background: #e9e9e9;
+    color: #333333;
+}
+
+#TODOscf_num{
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  top: 15px;
+  
+  /* needs to look OK with or without scrollbar */
+  
+  /*border: 0;
+  background: #9e9b9b;
+  color: white; */
+  padding: 5px 10px;
+  font-size: 0.7rem;
+  font-family: "Arial";
+  border-radius: 0px;
+  color: #7977772e;
+
+  /*border: 1px solid #efeaea; //#dddddd;*/
+  /*background: #f9f9f9;*/
+
+  /*font-weight: bold;*/
+  left: 60px;
+}
+
+#myToDo .next-button {
+  position: absolute;
+ 
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+  top: 5px;
+  
+  /* needs to look OK with or without scrollbar */
+  right: 18px;
+  
+  /*border: 0;
+  background: #9e9b9b;
+  color: white; */
+  top: 18px;
+
+    padding: 8px;
+    font-size: 0.8rem;
+
+  font-family: "Arial";
+  border-radius: 10%;
+
+   border: 1px solid #dddddd;
+  background: #e9e9e9;
+  color: #333333;
+
+}
+
+ #myToDo li>label {
+display: inline;
+ }
+
+#ToDo-close-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+ /* top: 10px; */
+  
+  /* needs to look OK with or without scrollbar */
+  right: 85px;
+  bottom: 10px;
+  
+  border: 0;
+  background: black;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  font-size: 10px;
+  }
+
+
+#myToDo #container {
+  width: 260px;
+  margin: 20px auto;
+  background: #d3d3d3;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  font-family: "Arial Narrow";
+  margin-bottom: 40px;
+}
+
+
+#myToDo h1 {
+  /*background: #2980b9;*/
+  color: white;
+  margin: 0;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#myToDo iframe {
+  float: left;
+}
+
+#myToDo ol {
+  /* THE BULLET POINTS
+  list-style: none;
+  */
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+#myToDo body {
+  background-color: rgb(13, 168, 108);
+}
+
+#myToDo li {
+  background: #e8e8e8;
+  min-height: 30px;
+      padding-top: 5px;
+    line-height: 15px;
+  color: #666;
+font-family: "Arial Narrow", Arial, sans-serif;
+font-size: 12px;
+}
+
+#myToDo li:nth-child(2n) {
+  background: #d3d3d3;
+}
+
+/*#myToDo .fa-external-link-alt{
+  right: 0px;
+  padding: 7px;
+  position: absolute;
+
+}*/
+
+#myToDo .fa-square{
+  color: white;
+  border: 1px solid #bbb4b4;
+}
+
+#myToDo #link {
+  /*height: 25px; */
+  width: 10px;
+  /*padding:3px;*/
+  margin-left: 0px;
+  margin-right: 0px;
+  text-align: center;
+  display: inline-block;
+  /*color: white; */
+  transition: 0.2s linear;
+  opacity: 0;
+ /* background: #e74c3c; */
+}
+
+#myToDo li:hover #link {
+  width: 19px;
+  opacity: 1.0;
+}
+
+
+
+#myToDo span {
+  /*height: 25px;*/
+  width: 15px;
+  padding-left:2px;
+  margin-right: 2px;
+  text-align: center;
+  display: inline-block;
+  /*
+  color: white;
+  transition: 0.2s linear;
+  opacity: 0;
+  background: #e74c3c */
+}
+
+#myToDo li:hover span {
+  width: 17px;
+  opacity: 1.0;
+}
+
+#myToDo input {
+  font-size: 12px;
+  width: 100%;
+  padding: 3px 3px 3px 20px;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0);
+  color: #2980b9;
+  background-color: #e4e4e4;
+}
+
+#myToDo input:focus {
+  background: white;
+  border: 3px solid green;
+  /*OUTLINE OF INPUT BOX
+  outlin: none; */
+}
+
+#myToDo .fa-plus {
+  float: right;
+}
+
+#myToDo .fa-edit {
+  float: right;
+  line-height: 0.5;
+}
+
+
+#myToDo .completed {
+  color: red;
+  text-decoration: line-through;
+}
+
+#myToDo #task-list button {
+  display: none;
+}
+
+
+
+
+
+  .add-button {
+  position: absolute;
+  
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+  
+ /* top: 10px; */
+  
+  /* needs to look OK with or without scrollbar */
+  left: 20px;
+  margin-bottom: 40px;
+  
+  border: 0;
+  background: grey;
+  color: white;
+  padding: 5px 10px 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+[data-tooltip] {
+    display: inline-block;
+    position: relative;
+    /*cursor: help; */
+    cursor: pointer;
+    padding: 4px;
+}
+/* Tooltip styling */
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    display: none;
+    position: absolute;
+    background: #000;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    min-width: 160px;
+    text-align: center;
+    border-radius: 4px;
+}
+/* Dynamic horizontal centering */
+[data-tooltip-position="top"]:before,
+[data-tooltip-position="bottom"]:before {
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/* Dynamic vertical centering */
+[data-tooltip-position="right"]:before,
+[data-tooltip-position="left"]:before {
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+[data-tooltip-position="top"]:before {
+    bottom: 100%;
+    margin-bottom: 6px;
+}
+[data-tooltip-position="right"]:before {
+    left: 100%;
+    margin-left: 6px;
+}
+[data-tooltip-position="bottom"]:before {
+    top: 100%;
+    margin-top: 6px;
+}
+[data-tooltip-position="left"]:before {
+    right: 100%;
+    margin-right: 6px;
+}
+
+/* Tooltip arrow styling/placement */
+[data-tooltip]:after {
+    content: '';
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+/* Dynamic horizontal centering for the tooltip */
+[data-tooltip-position="top"]:after,
+[data-tooltip-position="bottom"]:after {
+    left: 50%;
+    margin-left: -6px;
+}
+/* Dynamic vertical centering for the tooltip */
+[data-tooltip-position="right"]:after,
+[data-tooltip-position="left"]:after {
+    top: 50%;
+    margin-top: -6px;
+}
+[data-tooltip-position="top"]:after {
+    bottom: 100%;
+    border-width: 6px 6px 0;
+    border-top-color: #000;
+}
+[data-tooltip-position="right"]:after {
+    left: 100%;
+    border-width: 6px 6px 6px 0;
+    border-right-color: #000;
+}
+[data-tooltip-position="bottom"]:after {
+    top: 100%;
+    border-width: 0 6px 6px;
+    border-bottom-color: #000;
+}
+[data-tooltip-position="left"]:after {
+    right: 100%;
+    border-width: 6px 0 6px 6px;
+    border-left-color: #000;
+}
+/* Show the tooltip when hovering */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    display: block;
+    z-index: 50;
+}
+
+
+
+/*
+.post-page .bg-promo{background:#f6f6f6!important;border:1px solid #ebebeb!important;border-radius:.25rem;padding:30px 30px 0;margin-bottom:40px}.post-page blockquote{position:relative;padding-left:1em;border-left:.2em solid #0051aa;color:#000;margin-top:30px;margin-bottom:30px}.post-page blockquote footer{background:#fff!important;color:#000!important;font-weight:700!important;font-style:italic!important}.post-page .categories{border-top:1px solid #d9d9d9;padding-top:25px}.post-page .categories .h5{color:#686868;font-weight:700}.post-page .categories ul{list-style:none;padding-left:0;margin-bottom:20px}.post-page .categories ul li{position:relative;display:inline-block;margin-right:30px;padding-left:32px}.post-page .categories ul li:before{position:absolute;top:-1px;left:0;font-family:icons;content:"î¤§";color:#687498}.post-page .categories ul li a{color:#687498;font-weight:700;text-decoration:none;transition:color .3s}.post-page .categories ul li a:hover{color:#0051aa}.post-page .author{display:flex;border-top-left-radius:.25rem;border-top-right-radius:.25rem;background:#f7f7f7;border:solid #dee1e5;border-width:1px 1px 0;padding:25px 25px 15px}@media(max-width:575.98px){.post-page .author{flex-direction:column}.post-page .author div{text-align:center}.post-page .author img{margin-right:0!important}}.post-page .author img{min-width:80px;max-width:80px;margin:0 20px 20px 0}.post-page .author .author-name{color:#5c5c5c;font-weight:700}.post-page .author .author-description{color:#666;font-size:16px}.post-page .disclaimer{color:#666;font-size:14px;background:#fff;border-bottom-left-radius:.25rem;border-bottom-right-radius:.25rem;border:1px solid #dee1e5;border-top:2px solid #dee1e5;padding:10px 25px}.post-page .disclaimer p{margin:0;padding:0}@media(max-width:575.98px){.post-page .disclaimer{text-align:center}}.post-page .transparent-crumb{padding-bottom:40px}.post-page .transparent-crumb nav{display:inline-block}.post-page .transparent-crumb .breadcrumb{font-size:16px;padding-bottom:0}.post-page .transparent-crumb .breadcrumb .breadcrumb-item{margin-bottom:0}.post-page .faq-accordion .faq-answer-body{padding-bottom:20px}.post-page #toc_container~p{margin-top:25px}.post-page #toc_container~.lazyload-slideshare{margin-top:30px}.lazyload-slideshare{margin-bottom:20px}.post-page .faq-accordion{margin-bottom:0}.featured-posts{position:relative;z-index:2}.featured-posts img{margin-bottom:20px;border-radius:.25rem;-webkit-box-shadow:0 0 20px 0 rgba(0,0,0,.08);-moz-box-shadow:0 0 20px 0 rgba(0,0,0,.08);box-shadow:0 0 20px 0 rgba(0,0,0,.08)}.featured-posts .card-deck .card{background:0 0;margin-top:15px;margin-bottom:30px;border:none}.featured-posts .card-deck .card .card-body{padding-top:10px;padding-left:0;padding-right:0}.featured-posts .card-deck .card .card-footer{padding:0;border:none;background:0 0}.featured-posts .card-deck .card .card-footer a{font-weight:700;text-decoration:none}.featured-posts .card-deck .card .card-footer a i{display:inline-block;font-size:22px;vertical-align:middle;margin-left:3px}@media(max-width:767.98px){.featured-posts .card-deck{flex-direction:column}}
+
+*/
+
+#promo-menu .promo-launcher{z-index:1040;position:fixed;bottom:40px;right:20px;width:362px;height:87px;visibility:hidden;-webkit-transform:translateZ(0)}@media(max-width:575.98px){#promo-menu .promo-launcher{bottom:80px}}#promo-menu .promo-launcher-badge,#promo-menu .promo-launcher-preview{opacity:0;visibility:hidden}#promo-menu .promo-launcher-active.promo-launcher-with-badge .promo-launcher-badge,#promo-menu .promo-launcher-active.promo-launcher-with-preview .promo-launcher-preview,#promo-menu .promo-launcher-maximized.promo-launcher-with-badge .promo-launcher-badge{opacity:1;visibility:visible}#promo-menu .promo-launcher-active.promo-launcher-with-message .promo-launcher-button{visibility:visible}#promo-menu .promo-launcher-link{display:block;visibility:visible;width:100%;height:87px}#promo-menu .promo-launcher-button{background-repeat:no-repeat;box-shadow:0 2px 4px 0 rgba(0,0,0,.2);border-radius:50%;position:absolute;top:0;right:0;width:48px;height:48px;cursor:pointer;background-position:50%;background-color:#c6d0ba;}#promo-menu .promo-launcher-button svg{max-width:35px;height:auto;margin-top:6px;margin-left:6px;animation:rotate 1.6s cubic-bezier(.65,0,.75,1)}@media(-ms-high-contrast:none){#promo-menu .promo-launcher-button ::-ms-backdrop,#promo-menu .promo-launcher-button svg{margin-top:0}}#promo-menu .promo-launcher-button .smile{stroke:#fff;stroke-width:1.3;stroke-linecap:round;fill:transparent;animation:smile 1.6s cubic-bezier(.2,0,.8,1)}#promo-menu .promo-launcher-button .eyes{stroke:#fff;stroke-width:1.5;stroke-linecap:round;fill:transparent;animation:eyes 1.6s cubic-bezier(.7,0,.4,1)}@keyframes rotate{to{transform:rotate(2turn)}}@keyframes smile{50%{stroke-dasharray:20,5.1327}}@keyframes eyes{70%{stroke-dasharray:1,0,.5,23.6327}}#promo-menu .promo-launcher-badge{border-radius:50%;font-size:12px;line-height:18px;background-color:#ff3c00;text-align:center;color:#fff;position:absolute;width:18px;height:18px;top:-3px;right:-7px;cursor:pointer}#promo-menu .promo-launcher-preview{font-size:13px;color:#fff;line-height:20px;position:absolute;top:0;right:60px;width:300px;padding:12px 14px;border-radius:.25rem;background:#0d56ab}#promo-menu .promo-launcher-preview p{margin:0}#promo-menu .promo-launcher-preview:after{content:"";position:absolute;border-color:transparent #0d56ab;border-style:solid;border-width:6px 0 6px 6px;display:block;width:0;z-index:1;right:-5px;top:10px}@media(max-width:575.98px){#promo-menu .promo-launcher-preview{max-width:200px}}#promo-menu .promo-launcher-preview-body{cursor:pointer}@-webkit-keyframes promo-launcher-show-avatar{0%{-webkit-transform:scale(0);transform:scale(0)}80%{-webkit-transform:scale(1.2);transform:scale(1.2)}to{-webkit-transform:scale(1);transform:scale(1)}}@-keyframes promo-launcher-show-avatar{#promo-menu0%{-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0)}#promo-menu80%{-webkit-transform:scale(1.2);-ms-transform:scale(1.2);transform:scale(1.2)}#promo-menuto{-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-webkit-keyframes promo-launcher-show-badge{0%{opacity:0;-webkit-transform:scale(0);transform:scale(0)}50%{opacity:0}75%{opacity:1;-webkit-transform:scale(1.1);transform:scale(1.1)}to{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@-keyframes promo-launcher-show-badge{#promo-menu0%{opacity:0;-webkit-transform:scale(0);-ms-transform:scale(0);transform:scale(0)}#promo-menu50%{opacity:0}#promo-menu75%{opacity:1;-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1)}#promo-menuto{opacity:1;-webkit-transform:scale(1);-ms-transform:scale(1);transform:scale(1)}}@-webkit-keyframes promo-launcher-show-preview{0%{opacity:0;-webkit-transform:translate(10px);transform:translate(10px)}50%{-webkit-transform:translate(-5px) scale(1.05);transform:translate(-5px) scale(1.05)}to{opacity:1;-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}}@-keyframes promo-launcher-show-preview{#promo-menu0%{opacity:0;-webkit-transform:translate(10px);-ms-transform:translate(10px);transform:translate(10px)}#promo-menu50%{-webkit-transform:translate(-5px)scale(1.05);-ms-transform:translate(-5px)scale(1.05);transform:translate(-5px)scale(1.05)}#promo-menuto{opacity:1;-webkit-transform:translate(0)scale(1);-ms-transform:translate(0)scale(1);transform:translate(0)scale(1)}}@-webkit-keyframes promo-launcher-update-preview{0%{opacity:1;-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}50%{-webkit-transform:translate(-5px) scale(.95);transform:translate(-5px) scale(.95)}to{opacity:0;-webkit-transform:translate(10px) scale(0);transform:translate(10px) scale(0)}}@-keyframes promo-launcher-update-preview{#promo-menu0%{opacity:1;-webkit-transform:translate(0)scale(1);-ms-transform:translate(0)scale(1);transform:translate(0)scale(1)}#promo-menu50%{-webkit-transform:translate(-5px)scale(.95);-ms-transform:translate(-5px)scale(.95);transform:translate(-5px)scale(.95)}#promo-menuto{opacity:0;-webkit-transform:translate(10px)scale(0);-ms-transform:translate(10px)scale(0);transform:translate(10px)scale(0)}}#promo-menu .promo-launcher.promo-launcher-with-updated-avatar .promo-launcher-button{-webkit-animation:promo-launcher-show-avatar .15s ease-out 1s both;animation:promo-launcher-show-avatar .15s ease-out 1s both}#promo-menu .promo-launcher-enabled.promo-launcher-with-updated-avatar .promo-launcher-button{-webkit-animation:promo-launcher-hide-and-show-avatar .3s ease-out 1s both;animation:promo-launcher-hide-and-show-avatar .3s ease-out 1s both;transition:background-image 0s linear 1.15s,background-size 0s linear 1.15s,border-width 0s linear 1.15s}#promo-menu .promo-launcher.promo-launcher-with-badge .promo-launcher-badge{-webkit-animation:promo-launcher-show-badge .3s ease-out 1.5s both;animation:promo-launcher-show-badge .3s ease-out 1.5s both}#promo-menu .promo-launcher.promo-launcher-with-preview .promo-launcher-preview{-webkit-animation:promo-launcher-show-preview .3s ease-in-out 1.5s both;animation:promo-launcher-show-preview .3s ease-in-out 1.5s both}#promo-menu .promo-launcher.promo-launcher-with-preview .promo-launcher-update-preview{-webkit-animation:promo-launcher-update-preview .3s ease-out 1s both;animation:promo-launcher-update-preview .3s ease-out 1s both}#menumodal-blog .modal-content{border:0;background-color:inherit}

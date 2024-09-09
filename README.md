@@ -1,6 +1,6 @@
 # Flora-addon
 
-[LMS]: https://github.com/ssin122/lms
+[LMS]: https://github.com/Xinyu-Li/flora-lms
 [hyp-installation-docs]: https://memex.readthedocs.io/en/stable/index.html
 [hyp-framework]: https://github.com/ssin122/flora-addon/blob/main/h.pdf
 [hyp-inst]:https://github.com/ssin122/flora-addon/blob/main/hyp_inst.md
